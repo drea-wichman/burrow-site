@@ -642,6 +642,7 @@ html.busy,html.busy *{cursor:none!important;}
  <div class="bmi bmi-recent" data-act="recent" style="position:relative;">Recent Items &#9656;<div class="recent-flyout" id="recent-flyout"></div></div>
  <div class="bmi" data-act="privacy">Privacy</div>
  <div class="bmi" data-act="credits">Credits</div>
+ <div class="bmi" data-act="fineprint">Fine Print&hellip;</div>
  <div style="border-top:1px solid #e0e0e0;margin:4px 0;"></div>
  <div class="bmi" data-act="logout">Log Out&hellip;</div>
  </div>
@@ -1554,6 +1555,13 @@ html.busy,html.busy *{cursor:none!important;}
 <p style="margin:0;">Questions: <a href="mailto:hello@wichman.io" style="color:#2a6fc4;">hello@wichman.io</a></p>
 </div></div>
 </div>
+
+<div class="window" id="win-fineprint" style="top:170px;left:380px;width:400px;">
+<div class="titlebar"><div class="traffic"><span class="lz r"></span><span class="lz y"></span><span class="lz g"></span></div><span class="ttl">Fine Print</span></div>
+<div class="win-row"><div class="win-body" style="padding:24px 26px;font-size:12.5px;line-height:1.6;color:#444;">
+<p style="margin:0;">Each write-up reflects events as of its logged date and isn&rsquo;t updated as the story develops.</p>
+</div></div>
+</div>
 <div id="kpanic" role="alertdialog" aria-label="You need to restart your computer"><div class="kpbox">
 <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true" style="margin-bottom:14px;"><path d="M20 15.5 A20 20 0 1 0 42 15.5" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><line x1="31" y1="6" x2="31" y2="30" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
 <p>You need to restart your computer. Hold down the Power button for several seconds or press the Restart button.</p>
@@ -1696,6 +1704,7 @@ tick();setInterval(tick,10000);
  else if(a==='latest')openWin(window.__latestNote||'win-crypto');
  else if(a==='credits')openWin('win-credits');
  else if(a==='privacy')openWin('win-privacy');
+ else if(a==='fineprint')openWin('win-fineprint');
  else if(a==='logout'){var lg=document.getElementById('login');lg.style.display='flex';lg.classList.remove('gone');lg.classList.remove('picked');lg.classList.remove('diving');document.getElementById('login-pw').classList.remove('show');document.getElementById('login-go').classList.remove('show');document.getElementById('login-pwfield').textContent='';}
  });
  });
@@ -2674,8 +2683,10 @@ document.querySelectorAll('.redact').forEach(function(r){
   document.getElementById('pixel-close').addEventListener('click',function(e){ e.stopPropagation(); hideUnit(); });
 
   /* 45s attention: bounce + chime + speech together, fade together, badge stays */
-  var alertFired=false;
-  setTimeout(function(){
+  var alertFired=false, loginEl=document.getElementById('login');
+  function loggedIn(){ return !loginEl || getComputedStyle(loginEl).display==='none'; }
+  function fireAlert(){
+    if(!loggedIn()){ waitForLogin(); return; }
     if(alertFired)return; alertFired=true;
     if(unit.classList.contains('show'))return;
     if(badge){ badge.style.display='block'; badge.classList.add('show'); }
@@ -2693,7 +2704,9 @@ document.querySelectorAll('.redact').forEach(function(r){
       speech.classList.add('show');
     }
     setTimeout(function(){ if(ic)ic.classList.remove('pixel-bouncing'); if(speech){speech.classList.remove('show'); speech.style.display='none';} },4500);
-  },45000);
+  }
+  function waitForLogin(){ if(!loggedIn()){ setTimeout(waitForLogin,1000); return; } setTimeout(fireAlert,45000); }
+  waitForLogin();
 })();
 </script>
 
