@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 -4 470 634" width="470" height="634"><defs>
+<clipPath id="mc"><ellipse cx="112" cy="160" rx="62" ry="152" transform="rotate(-20 112 160)"/>
+    <path d="M272 345 C242 275 238 150 300 82 C342 56 398 98 422 160 C434 192 437 226 421 236 C405 246 390 222 377 198 C369 184 362 176 356 172 C350 235 320 295 292 345 Z"/>
+    <ellipse cx="210" cy="405" rx="127" ry="145"/>
+    <ellipse cx="210" cy="465" rx="157" ry="100"/>
+    <path d="M53 465 C53 505 80 538 118 556 C130 560 143 565.3 150 567.5 C154 568.7 157.8 573.7 159 576.1 A52 21 0 0 0 261 576.1 C262.2 573.7 266 568.7 270 567.5 C277 565.3 290 560 302 556 C340 538 367 505 367 465 Z"/></clipPath>
+<linearGradient id="mbase" x1="0" y1="20" x2="0" y2="590" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3f8bdc"/><stop offset=".3" stop-color="#6cb2ee"/><stop offset=".7" stop-color="#8ccaf4"/><stop offset="1" stop-color="#b0e8ff"/></linearGradient>
+<linearGradient id="mgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".12"/></linearGradient>
+<radialGradient id="mcau" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e6fbff" stop-opacity=".95"/><stop offset="1" stop-color="#bdf2ff" stop-opacity="0"/></radialGradient>
+<filter id="mrim" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceAlpha" stdDeviation="20" result="b"/><feComposite in="SourceAlpha" in2="b" operator="out" result="e"/><feFlood flood-color="#2f7fd4" flood-opacity="0.65"/><feComposite in2="e" operator="in"/></filter>
+<filter id="msoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+<filter id="mtiny" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="msh" x="-20%" y="-20%" width="150%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="10"/><feOffset dx="8" dy="14"/><feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer></filter>
+<filter id="mblend" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+<g id="ms"><ellipse cx="112" cy="160" rx="62" ry="152" transform="rotate(-20 112 160)"/>
+    <path d="M272 345 C242 275 238 150 300 82 C342 56 398 98 422 160 C434 192 437 226 421 236 C405 246 390 222 377 198 C369 184 362 176 356 172 C350 235 320 295 292 345 Z"/>
+    <ellipse cx="210" cy="405" rx="127" ry="145"/>
+    <ellipse cx="210" cy="465" rx="157" ry="100"/>
+    <path d="M53 465 C53 505 80 538 118 556 C130 560 143 565.3 150 567.5 C154 568.7 157.8 573.7 159 576.1 A52 21 0 0 0 261 576.1 C262.2 573.7 266 568.7 270 567.5 C277 565.3 290 560 302 556 C340 538 367 505 367 465 Z"/></g>
+</defs>
+
+<use href="#ms" filter="url(#msh)"/>
+<use href="#ms" fill="url(#mbase)"/>
+<g clip-path="url(#mc)">
+<use href="#ms" fill="#000" filter="url(#mrim)"/>
+<g filter="url(#mblend)"><g opacity="0.95" fill="url(#mgl)">
+<ellipse cx="210" cy="322" rx="112" ry="56"/>
+<ellipse cx="104" cy="118" rx="36" ry="98" transform="rotate(-20 104 118)"/>
+<ellipse cx="318" cy="128" rx="44" ry="40" transform="rotate(20 318 128)"/>
+</g></g><g opacity="1"><ellipse cx="210" cy="540" rx="150" ry="60" fill="url(#mcau)"/><ellipse cx="400" cy="225" rx="25" ry="22" fill="url(#mcau)"/></g><ellipse cx="210" cy="440" rx="110" ry="70" fill="#fff" opacity=".2" filter="url(#msoft)"/>
+</g></svg>
