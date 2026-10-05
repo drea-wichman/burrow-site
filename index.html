@@ -699,6 +699,7 @@ html.busy,html.busy *{cursor:none!important;}
  </div>
  <div class="dsbody" id="todo-body" style="background:#ffcfcd;color:#000;font-family:'Lucida Grande','Lucida Sans Unicode',-apple-system,'Helvetica Neue',sans-serif;font-size:13.5px;line-height:1.35;letter-spacing:-0.3px;">
  <p style="margin:3px 0;"><span style="display:inline-block;width:14px;height:14px;border:1.5px solid #c98985;border-radius:2px;background:#ffcfcd;text-align:center;vertical-align:-2px;margin-right:7px;"><svg width="9" height="9" viewBox="0 0 12 12" style="vertical-align:3px;"><path d="M2.5 6.3 L4.8 8.6 L9.6 3.2" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter"/></svg></span>finally launch The Burrow</p>
+ <div id="todo-season"></div>
  <p style="margin:3px 0;"><span style="display:inline-block;width:14px;height:14px;border:1.5px solid #c98985;border-radius:2px;background:#ffcfcd;vertical-align:-2px;margin-right:7px;"></span>land a grc placement</p>
  <p style="margin:3px 0;"><span style="display:inline-block;width:14px;height:14px;border:1.5px solid #c98985;border-radius:2px;background:#ffcfcd;text-align:center;vertical-align:-2px;margin-right:7px;"><svg width="9" height="9" viewBox="0 0 12 12" style="vertical-align:3px;"><path d="M2.5 6.3 L4.8 8.6 L9.6 3.2" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter"/></svg></span>order us to uk cloverleaf cables</p>
  <p style="margin:3px 0;"><span style="display:inline-block;width:14px;height:14px;border:1.5px solid #c98985;border-radius:2px;background:#ffcfcd;text-align:center;vertical-align:-2px;margin-right:7px;"><svg width="9" height="9" viewBox="0 0 12 12" style="vertical-align:3px;"><path d="M2.5 6.3 L4.8 8.6 L9.6 3.2" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter"/></svg></span>set up pi-hole</p>
@@ -1648,6 +1649,37 @@ html.busy,html.busy *{cursor:none!important;}
 <script>
 function tick(){var d=new Date(),dy=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';h=h%12||12;document.getElementById('clock').textContent=dy[d.getDay()]+' '+(d.getMonth()+1)+'/'+d.getDate()+'/2003 '+h+':'+(m<10?'0':'')+m+' '+ap;}
 tick();setInterval(tick,10000);
+
+/* ---- Seasonal to-do lines ---- */
+(function(){
+ var box=document.getElementById('todo-season');
+ if(!box)return;
+ var bx='<span style="display:inline-block;width:14px;height:14px;border:1.5px solid #c98985;border-radius:2px;background:#ffcfcd;vertical-align:-2px;margin-right:7px;"></span>';
+ var now=new Date(),y=now.getFullYear(),k=(now.getMonth()+1)*100+now.getDate();
+ var tg=1+(4-new Date(y,10,1).getDay()+7)%7+21;
+ var L=[
+  [1001,1031,'finish halloween costume'],
+  [1101,1100+tg,'thanksgiving plans in london (??)'],
+  [1101,1100+tg,'buy "wellies"'],
+  [1100+tg+1,1225,'put up christmas tree'],
+  [1100+tg+1,1225,'nye plans (??)'],
+  [1226,1231,'take down the tree'],
+  [101,131,'buy a new planner'],
+  [101,131,'dry january',1],
+  [201,214,"valentine's plans (??)"],
+  [215,531,'spring clean'],
+  [301,317,'find something green to wear'],
+  [318,411,'scout out a spot for the boat race']
+ ];
+ var html='';
+ for(var i=0;i<L.length;i++){
+  var r=L[i];
+  if(k>=r[0]&&k<=r[1]){
+   html+='<p style="margin:3px 0;">'+bx+'<span'+(r[3]?' style="text-decoration:line-through;"':'')+'>'+r[2]+'</span></p>';
+  }
+ }
+ box.innerHTML=html;
+})();
 
 /* ---- Weather: build 7-day forecast starting tomorrow, always rain ---- */
 (function(){
